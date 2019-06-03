@@ -5,10 +5,190 @@
  */
 package DAO;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import modelo.Usuario;
+
 /**
  *
  * @author lvazquezdorna
  */
 public class ServerDAO {
-    
+
+    //ATRIBUTO DE CONEXION CONTRA LA BASE DE DATOS
+    private AccesoDB acceso;
+
+    //CONTRUCTORES
+    public ServerDAO() throws SQLException, ClassNotFoundException {
+        acceso = new AccesoDB();
+    }
+
+    /**
+     * Metodo que da de alta un usuario
+     *
+     * @param u
+     * @return >0 si inserta en la tabla y 0 si no pudo insertar
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    public boolean altaUsuario(Usuario u) throws SQLException, ClassNotFoundException {
+        PreparedStatement pstm;
+        Connection con;
+        String sql;
+        //campos
+        sql = "INSERT INTO usuarios (nick,password) VALUES (?,?)";
+
+        //conexion 
+        if (acceso == null) {
+            return false;
+        } else {
+            con = acceso.getConexion();
+        }
+        pstm = con.prepareStatement(sql);
+        pstm.setString(1, u.getNick());
+        pstm.setString(2, u.getPassword());
+
+        int res = pstm.executeUpdate();// indica el numero de filas insertadas
+        pstm.close();
+        con.close();
+
+        return res > 0;
+    }
+
+    /**
+     * Metodo que borra un usuario
+     *
+     * @param u
+     * @return >0 si inserta en la tabla y 0 si no pudo borrar
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    public boolean bajaUsuario(Usuario u) throws SQLException, ClassNotFoundException {
+        PreparedStatement pstm;
+        Connection con;
+        String sql;
+        //campos
+        sql = "DELETE FROM usuarios  WHERE id=?";
+
+        //conexion 
+        if (acceso == null) {
+            return false;
+        } else {
+            con = acceso.getConexion();
+        }
+        pstm = con.prepareStatement(sql);
+        pstm.setInt(1, u.getId());
+
+        int res = pstm.executeUpdate();// indica el numero de filas insertadas
+        pstm.close();
+        con.close();
+
+        return res > 0;
+
+    }
+
+    public boolean modificarUsuario(Usuario u) throws SQLException, ClassNotFoundException {
+        PreparedStatement pstm;
+        Connection con;
+        String sql;
+        //campos
+        sql = "UPDATE usuarios SET nick=?, password=? WHERE id=?";
+
+        //conexion 
+        if (acceso == null) {
+            return false;
+        } else {
+            con = acceso.getConexion();
+        }
+        pstm = con.prepareStatement(sql);
+        pstm.setString(1, u.getNick());
+        pstm.setString(2, u.getPassword());
+        pstm.setInt(3, u.getId());
+
+        int res = pstm.executeUpdate();// indica el numero de filas insertadas
+        pstm.close();
+        con.close();
+
+        return res > 0;
+    }
+
+    /**
+     * Metodo que lista los usuarios guardados en la bd
+     *
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws Exception
+     */
+    private List<Usuario> getUsuarios() throws SQLException, ClassNotFoundException, Exception {
+        List<Usuario> listado = new ArrayList<>();
+        Connection con;
+        Statement stm;
+        ResultSet rs;
+        String sql;
+
+        sql = "SELECT * FROM usuarios";
+
+        if (acceso == null) {
+            return null;
+        } else {
+            con = acceso.getConexion();
+        }
+
+        stm = con.createStatement();
+        rs = stm.executeQuery(sql);
+        while (rs.next()) {
+            Usuario u = new Usuario();
+
+            u.setId(rs.getInt("id"));
+            u.setNick(rs.getString(("nick")));
+            u.setPassword(rs.getString("password"));
+            listado.add(u);
+        }
+        rs.close();
+        stm.close();
+        con.close();
+        return listado;
+    }
+/**
+ * metodo que devuelve usuario con nick y contraseña, para comprobar loging
+ * @param u
+ * @return
+ * @throws SQLException
+ * @throws ClassNotFoundException 
+ */
+    private Usuario getUsuario(Usuario u) throws SQLException, ClassNotFoundException {
+        Connection con;
+        PreparedStatement pstm;
+        ResultSet rs;
+        String sql;
+
+        sql = "SELECT * FROM usuarios where nick=? and password=?";
+
+        if (acceso == null) {
+            return null;
+        } else {
+            con = acceso.getConexion();
+        }
+
+        pstm = con.prepareStatement(sql);
+        pstm.setString(1, u.getNick());
+        pstm.setString(2, u.getPassword());
+        rs = pstm.executeQuery();
+
+        u.setId(rs.getInt("id"));
+        u.setNick(rs.getString(("nick")));
+        u.setPassword(rs.getString("password"));
+
+        rs.close();
+        pstm.close();
+        con.close();
+        return u;
+    }
+
 }

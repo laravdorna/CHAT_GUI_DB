@@ -1,4 +1,4 @@
-package chat.client;
+package modelo.chat.client;
 
 import java.net.*;
 import java.io.*;
@@ -16,7 +16,7 @@ public class Client {
     private String hostname;//IP
     private int port;//Puerto de escucha
     private String userName;// nombre de usuario 
-
+    private String password;
     /**
      * Constructor al que se le pasan obligatoriamente los parametros de
      * conexion
@@ -51,7 +51,7 @@ public class Client {
         }
 
     }
-
+    
     //metodos getter y setter
     void setUserName(String userName) {
         this.userName = userName;

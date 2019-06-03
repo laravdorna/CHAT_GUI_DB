@@ -1,4 +1,4 @@
-package chat.client;
+package modelo.chat.client;
 
 
 import consolereader.ConsoleReader;

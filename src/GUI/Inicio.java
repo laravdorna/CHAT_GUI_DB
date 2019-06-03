@@ -5,11 +5,25 @@
  */
 package GUI;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelo.chat.client.Client;
+
 /**
  *
  * @author lvazquezdorna
  */
 public class Inicio extends javax.swing.JFrame {
+
+    public Socket sock;
+    public BufferedReader reader;
+    public PrintWriter writer;
+    public String nick;
 
     /**
      * Creates new form Inicio
@@ -134,7 +148,24 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void b_ConecctarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ConecctarActionPerformed
-        // TODO add your handling code here:
+
+        try {
+            //intancia un objeto cliente y llama al metodo ejecutar chat
+            String hostname = "localhost";
+            int port = 5000;
+            sock = new Socket(hostname, port);
+            InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
+            reader = new BufferedReader(streamreader);
+            writer = new PrintWriter(sock.getOutputStream());
+            nick = TF_Nick.getText();
+            writer.println("/login " + nick); // debe ir nombre y password separados por espacios
+            writer.flush();
+
+            Dlg_Chat chat = new Dlg_Chat(this, true);
+            chat.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_b_ConecctarActionPerformed
 
     private void b_NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_NuevoActionPerformed

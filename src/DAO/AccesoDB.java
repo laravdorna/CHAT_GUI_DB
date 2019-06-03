@@ -80,10 +80,10 @@ public class AccesoDB {
      */
     public void crearTablas() {
         //añadir a la SQL lo que le falta
-        String sql1 = "CREATE TABLE IF NOT EXISTS clientes ("
-                + " idCliente INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + " nombre text"
-                + " puerto INTEGER"
+        String sql1 = "CREATE TABLE IF NOT EXISTS usuarios ("
+                + " id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + " nick text UNIQUE"
+                + " password text"
                 + ");";
 
         try (Statement stmt = conn.createStatement()) {
