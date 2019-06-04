@@ -10,11 +10,17 @@ package modelo;
  * @author EliteDesk
  */
 public class Usuario {
+
     private int id;
     private String nick;
     private String password;
 
     public Usuario() {
+    }
+
+    public Usuario(String nick, String password) {
+        this.nick = nick;
+        this.password = password;
     }
 
     public Usuario(int id, String nick, String password) {
@@ -46,6 +52,10 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "nick=" + nick + ", password=" + password + '}';
+    }
+
 }

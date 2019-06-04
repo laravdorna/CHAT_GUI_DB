@@ -20,13 +20,13 @@ import java.util.logging.Logger;
 public class AccesoDB {
     //atributos de conexion
 
-    private Connection conn;
+    public Connection conn;
     private String url;
     static Statement stm = null;
 
     //constructor donde se inicializan la url y el acceso a la base de datos y realiza la conexion cuando lo instancies
     public AccesoDB() throws SQLException, ClassNotFoundException {
-        url = "jdbc:sqlite:registroClientes.db";
+        url = "jdbc:sqlite:chat.sqlite";
 
         realizarConexion();
     }
@@ -45,7 +45,6 @@ public class AccesoDB {
             if (conn != null) {
                 DatabaseMetaData meta = conn.getMetaData();
                 System.out.println("The driver name is " + meta.getDriverName());
-                System.out.println("A new database has been created.");
             }
 
         } catch (SQLException e) {
@@ -82,7 +81,7 @@ public class AccesoDB {
         //añadir a la SQL lo que le falta
         String sql1 = "CREATE TABLE IF NOT EXISTS usuarios ("
                 + " id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + " nick text UNIQUE"
+                + " nick text UNIQUE,"
                 + " password text"
                 + ");";
 
@@ -95,5 +94,5 @@ public class AccesoDB {
             System.out.println(e.getMessage());
         }
     }
-
+ 
 }

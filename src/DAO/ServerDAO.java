@@ -125,7 +125,7 @@ public class ServerDAO {
      * @throws ClassNotFoundException
      * @throws Exception
      */
-    private List<Usuario> getUsuarios() throws SQLException, ClassNotFoundException, Exception {
+    public List<Usuario> getUsuarios() throws SQLException, ClassNotFoundException, Exception {
         List<Usuario> listado = new ArrayList<>();
         Connection con;
         Statement stm;
@@ -155,14 +155,17 @@ public class ServerDAO {
         con.close();
         return listado;
     }
-/**
- * metodo que devuelve usuario con nick y contraseña, para comprobar loging
- * @param u
- * @return
- * @throws SQLException
- * @throws ClassNotFoundException 
- */
-    private Usuario getUsuario(Usuario u) throws SQLException, ClassNotFoundException {
+
+    /**
+     * metodo que devuelve usuario con nick y contraseña, para comprobar loging
+     *
+     * @param u
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    public Usuario getUsuario(Usuario u) throws SQLException, ClassNotFoundException {
+        List<Usuario> listado = new ArrayList<>();
         Connection con;
         PreparedStatement pstm;
         ResultSet rs;
@@ -181,14 +184,24 @@ public class ServerDAO {
         pstm.setString(2, u.getPassword());
         rs = pstm.executeQuery();
 
-        u.setId(rs.getInt("id"));
-        u.setNick(rs.getString(("nick")));
-        u.setPassword(rs.getString("password"));
+        while (rs.next()) {
+            Usuario u2 = new Usuario();
+
+            u2.setId(rs.getInt("id"));
+            u2.setNick(rs.getString(("nick")));
+            u2.setPassword(rs.getString("password"));
+            listado.add(u2);
+        }
 
         rs.close();
         pstm.close();
         con.close();
-        return u;
+        if (listado.size() > 0) {
+            return listado.get(0);
+        } else {
+            return null;
+        }
+
     }
 
 }

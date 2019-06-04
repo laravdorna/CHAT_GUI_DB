@@ -1,0 +1,42 @@
+[lun, 20:52:44] Nuevo usuario conectado: asdaads
+[lun, 21:54:59] Nuevo usuario conectado: wer:has connected.:Connect
+[lun, 21:55:05] [wer:has connected.:Connect]: gonzalo
+[lun, 21:55:15] [wer:has connected.:Connect]: asd
+[lun, 21:55:15] [wer:has connected.:Connect]: asdasd
+[lun, 21:55:16] [wer:has connected.:Connect]: asdasdasd
+[lun, 21:55:17] [wer:has connected.:Connect]: asdasdasd
+[lun, 21:55:18] [wer:has connected.:Connect]: asdasdasd
+[lun, 21:59:18] Nuevo usuario conectado: lara
+[lun, 21:59:30] Nuevo usuario conectado: gonzalo
+[lun, 21:59:42] [gonzalo]: test
+[lun, 21:59:58] [lara]: asdasd
+[lun, 22:04:04] Nuevo usuario conectado: gonzalo
+[lun, 22:04:21] Nuevo usuario conectado: lara
+[lun, 22:04:30] [lara]: hola
+[lun, 22:05:37] Nuevo usuario conectado: lara
+[lun, 22:05:55] Nuevo usuario conectado: Gonzalo
+[lun, 22:06:14] Nuevo usuario conectado: pedro
+[lun, 22:06:25] [pedro]: asd
+[lun, 22:06:27] [pedro]: asd
+[lun, 22:06:27] [pedro]: asd
+[lun, 22:06:34] [Gonzalo]: hola
+[lun, 22:06:41] [Gonzalo]: que tal
+[lun, 22:11:17] Nuevo usuario conectado: gonzalo
+[lun, 22:11:30] Nuevo usuario conectado: asd
+[lun, 22:11:34] [asd]: hola
+[lun, 22:11:40] [asd]: que tal
+[lun, 22:29:16] Nuevo usuario conectado: gonzalo
+[lun, 22:29:28] Nuevo usuario conectado: Lara
+[lun, 22:29:54] Nuevo usuario conectado: prpep
+[lun, 23:01:19] Nuevo usuario conectado: asdasd
+[lun, 23:01:31] [asdasd]: sfdgsfg
+[lun, 23:01:35] Nuevo usuario conectado: asdasd
+[lun, 23:03:19] Nuevo usuario conectado: asdf
+[lun, 23:03:25] [asdf]: asdasd
+[lun, 23:03:30] Nuevo usuario conectado: wrwer
+[lun, 23:08:06] Nuevo usuario conectado: /login
+[lun, 23:08:17] Nuevo usuario conectado: /login
+[lun, 23:12:37] Nuevo usuario conectado: ttes
+[lun, 23:12:47] Nuevo usuario conectado: gon
+[lun, 23:13:02] [ttes]: gon
+[lun, 23:13:06] [gon]: qwe

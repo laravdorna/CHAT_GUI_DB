@@ -1,12 +1,17 @@
 package modelo.chat.server;
 
+import DAO.AccesoDB;
+import DAO.ServerDAO;
 import java.io.*;
 import java.net.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Usuario;
 
 /**
  * Este es el programa del servidor de chat. Presione Ctrl + C para terminar el
@@ -30,12 +35,13 @@ public class Server {
         this.port = port;
     }
 
-      /**
+    /**
      * Almacena el nombre de usuario del cliente recién conectado.
      */
     void addUserName(String userName) {
         userNames.add(userName);
     }
+
     //devuelve los nombres de los usuarios
     Set<String> getUserNames() {
         return this.userNames;
@@ -60,8 +66,7 @@ public class Server {
     boolean hasUsers() {
         return !this.userNames.isEmpty();
     }
-    
-    
+
     /**
      * Metodo que ejecuta el servidor. Avisa de cada nuevo usuario conectado y
      * lo añade al chat llamando a la clase multiserver.
@@ -72,9 +77,9 @@ public class Server {
             System.out.println("El servidor de chat está escuchando en el puerto " + port);
             //prueba de como funciona el Logger
             /* Logger.getLogger(Server.class.getName()).log(
-                    Level.INFO,
-                    "Chat Server is listening on port " + port
-            );*/
+             Level.INFO,
+             "Chat Server is listening on port " + port
+             );*/
 
             while (true) {
                 Socket socket = serverSocket.accept();
@@ -130,8 +135,6 @@ public class Server {
         }
     }
 
-  
-
     /**
      * Metodo main. Instancia un objeto de tipo servidor y llama al metodo
      * ejecutar
@@ -140,9 +143,26 @@ public class Server {
      */
     public static void main(String[] args) {
         int port = 5000;
+        //conecta la db
+        AccesoDB acceso;
+        try {
+            acceso = new AccesoDB();
+            acceso.crearTablas();
+
+            //ServerDAO serverdao = new ServerDAO();
+            //serverdao.altaUsuario(new Usuario("gonzalo", "asd"));
+//            List<Usuario> usuarios = serverdao.getUsuarios();
+//            System.out.println(usuarios);
+            
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         Server server = new Server(port);
         server.execute();
+
     }
 
 }

@@ -45,10 +45,12 @@ public class Dlg_Chat extends javax.swing.JDialog {
 
             try {
                 while ((stream = reader.readLine()) != null) {
+
+                    //comprueba si es un comando
                     if (stream.startsWith("/")) {
                         String cmd = stream.substring(1, stream.indexOf(' '));
                         String content = stream.substring(stream.indexOf(' ') + 1);
-
+                        //si el comando es usuarios lo separa para mostrar en la lista de usuarios
                         if (cmd.equalsIgnoreCase("users")) {
                             DefaultListModel listModel = new DefaultListModel();
                             String[] users = content.split(",");
@@ -151,6 +153,9 @@ public class Dlg_Chat extends javax.swing.JDialog {
 
     private void b_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_SalirActionPerformed
         // TODO add your handling code here:
+        writer.println("/logout ");
+        writer.flush();
+        this.dispose();
     }//GEN-LAST:event_b_SalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

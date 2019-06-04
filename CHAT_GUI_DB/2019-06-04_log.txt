@@ -1,0 +1,29 @@
+[mar, 16:41:33] Nuevo usuario conectado: pepe
+[mar, 16:41:55] Nuevo usuario conectado: nana
+[mar, 16:42:05] [nana]: hola
+[mar, 16:42:08] [pepe]: que tal
+[mar, 18:13:39] Nuevo usuario conectado: tea
+[mar, 18:13:44] [tea]: hola
+[mar, 18:20:48] Nuevo usuario conectado: tea
+[mar, 18:21:08] Nuevo usuario conectado: gon
+[mar, 18:21:16] [gon]: hola
+[mar, 18:29:13] Nuevo usuario conectado: qwe
+[mar, 18:29:39] Nuevo usuario conectado: qwe
+[mar, 18:32:29] Nuevo usuario conectado: pipi
+[mar, 18:36:26] Nuevo usuario conectado: pipi
+[mar, 18:36:51] Nuevo usuario conectado: gon
+[mar, 18:36:58] [pipi]: hola
+[mar, 18:37:20] [gon]: dfgdfg
+[mar, 18:39:00] Nuevo usuario conectado: pipi
+[mar, 18:39:15] Nuevo usuario conectado: gon
+[mar, 18:39:22] [pipi]: hola
+[mar, 18:39:28] [gon]: que tal
+[mar, 18:42:02] Nuevo usuario conectado: pipi
+[mar, 18:42:28] [pipi]: hola
+[mar, 18:45:18] Nuevo usuario conectado: pipi
+[mar, 18:47:22] Nuevo usuario conectado: pipi
+[mar, 18:47:39] Nuevo usuario conectado: gon
+[mar, 18:47:43] Nuevo usuario conectado: pipi
+[mar, 18:47:48] [gon]: hola
+[mar, 18:47:51] [pipi]: que tal
+[mar, 18:48:04] Nuevo usuario conectado: pipi
